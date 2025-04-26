@@ -111,7 +111,7 @@ A C++ utility for regex searching and replacing using the Boost regex library.
 
 ## Building
 
-### Using Conan
+### Using Conan (Native Build)
 
 ```bash
 # Clone the repository and navigate to the project directory
@@ -131,6 +131,31 @@ Alternatively, you can use the provided build script:
 
 # On Windows
 build.bat
+```
+
+### Using Docker (RHEL 8 Base)
+
+If you have Docker installed, you can build and run the application without installing any dependencies:
+
+```bash
+# Build the Docker image (RHEL 8-based)
+docker build -t regex-search .
+
+# Run a command using the Docker container
+docker run regex-search find "\\d+" "abc123def456"
+
+# Process a file (must be mounted into the container)
+docker run -v $(pwd)/test:/data regex-search find "\\d+" -f /data/sample.txt
+```
+
+For easier management, you can use Docker Compose:
+
+```bash
+# Build and run with Docker Compose
+docker-compose up --build
+
+# Run a different command
+docker-compose run --rm regex-search match "^[a-z]+$" "lowercase"
 ```
 
 ## Running Tests
@@ -243,6 +268,12 @@ def requirements(self):
 
 4. **Library not found during runtime**:
    - Make sure the runtime libraries are copied to the bin directory (this should happen automatically during the build)
+
+5. **Docker issues**:
+   - If you encounter permission issues with Docker, you may need to run commands with `sudo`
+   - For file access issues, make sure volumes are correctly mounted
+   - You may need access to the Red Hat Container Registry to pull the UBI base images
+   - If building in an air-gapped environment, ensure you have the UBI base images available locally
 
 ## License
 
