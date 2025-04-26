@@ -1,0 +1,16 @@
+This is a sample text file for testing the regex search tool.
+
+Here are some numbers: 123, 456, 789
+Here are some dates: 2023-01-15, 2023/02/20, 03/15/2023
+Here are some emails: user@example.com, john.doe@company.co.uk, test-user+tag@domain.info
+
+Phone numbers: (123) 456-7890, 123-456-7890, +1 234 567 8901
+IP addresses: 192.168.1.1, 10.0.0.1, 255.255.255.0
+
+URLs: https://example.com, http://subdomain.example.org/path?query=value, ftp://server.net
+
+Some Key-Value Pairs:
+name=John Smith
+age=30
+email=john@example.com
+phone=555-123-4567
